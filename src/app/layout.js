@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Link from "next/link"
+import Image from "next/image"
 
 export default function RootLayout({ children }) {
   return (
@@ -9,11 +10,27 @@ export default function RootLayout({ children }) {
             backgroundColor: "#a8e61aff",
             padding: "1rem",
             borderBottom: "1px solid #ccc",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <h1>My Site Title</h1>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Image
+              src="/images/logo.png"
+              alt="Site logo"
+              width={120}
+              height={40}
+              priority
+              style={{ marginRight: "1rem" }}
+            />
+            <h1 style={{ margin: 0 }}>My Site Title</h1>
+          </div>
+
           <nav>
-            <Link href="/" style={{ marginRight: "1rem" }}>Home</Link>
+            <Link href="/" style={{ marginRight: "1rem" }}>
+              Home
+            </Link>
             <Link href="/products">Products</Link>
           </nav>
         </header>
@@ -34,5 +51,5 @@ export default function RootLayout({ children }) {
         </footer>
       </body>
     </html>
-  );
+  )
 }

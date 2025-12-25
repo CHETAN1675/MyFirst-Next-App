@@ -13,7 +13,7 @@ export default async function ProductDetailsPage({ params }) {
       <p>Price: ${product.price}</p>
 
        <Image
-        src="/image.jpg"  
+        src="/images/productImage.jpg"  
         alt={product.title||"Product Image"}
         width={400}                    
         height={300}                    
