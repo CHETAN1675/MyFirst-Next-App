@@ -1,17 +1,14 @@
-export default function ProductDetailsPage({ params }) {
-  const { id } = params;
+export default async function ProductDetailsPage({ params }) {
+  const res = await fetch(
+    `https://dummyjson.com/products/${params.id}`
+  );
+  const product = await res.json();
 
   return (
-    <main>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: "16px",
-          maxWidth: "400px",
-        }}
-      >
-        <h2>Product {id} details page — content coming soon!</h2>
-      </div>
-    </main>
+    <div>
+      <h1>{product.title}</h1>
+      <p>{product.description}</p>
+      <p>Price: ${product.price}</p>
+    </div>
   ); 
 }
