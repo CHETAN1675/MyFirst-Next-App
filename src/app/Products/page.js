@@ -1,10 +1,11 @@
 import Link from "next/link";
 
+
 export default async function ProductsPage(){
 
   const res = await fetch("https://dummyjson.com/products");
   const data = await res.json();
-  
+
     return(
         <main>
       <h1>Products Page</h1>
