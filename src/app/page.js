@@ -1,4 +1,6 @@
-
+export const metadata = {
+  title : "Products Store - Home"
+}
 
 export default function Home() {
   return (

@@ -1,6 +1,7 @@
 import Link from "next/link";
-
-
+export const metadata = {
+title:"Products Store - Products List"
+}
 export default async function ProductsPage(){
 
   const res = await fetch("https://dummyjson.com/products");
