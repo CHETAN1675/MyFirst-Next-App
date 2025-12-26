@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import "./globals.css"
 
 export default function RootLayout({ children }) {
   return (
@@ -17,21 +18,22 @@ export default function RootLayout({ children }) {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Site logo"
               width={120}
-              height={40}
+              height={60}
               priority
               style={{ marginRight: "1rem" }}
             />
-            <h1 style={{ margin: 0 }}>My Site Title</h1>
+            <h1 style={{ margin: 0 }}>NextJS App one</h1>
           </div>
 
-          <nav>
-            <Link href="/" style={{ marginRight: "1rem" }}>
+          <nav className="nav">
+            <Link href="/" >
               Home
             </Link>
             <Link href="/products">Products</Link>
+            <Link href="/login">Login</Link>
           </nav>
         </header>
 

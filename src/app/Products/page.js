@@ -1,4 +1,7 @@
 import Link from "next/link";
+import classes from "./products.module.css"
+
+
 export const metadata = {
 title:"Products Store - Products List"
 }
@@ -12,10 +15,10 @@ export default async function ProductsPage(){
       <h1>Products Page</h1>
       <p>Select a product to view details:</p>
 
-      <ul>
+      <ul className={classes.list} >
          {data.products.map((product) => (
-          <li key={product.id}>
-            <Link href={`/products/${product.id}`}>
+          <li key={product.id} className={classes.listItem}>
+            <Link href={`/products/${product.id}`}  className={classes.link}>
               {product.title}
             </Link>
           </li>

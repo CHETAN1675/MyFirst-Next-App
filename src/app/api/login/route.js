@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request){
     const {email,password} =await request.json();
-    if(email!=="1@gmail.com" && password!=="123456"){
+    if(email!=="@gmail.com" || password!=="123456"){
         return NextResponse.json({error:"Invalid Credentials"},{status:401})
     }
     const token = await signToken({email,"role":"user"});
