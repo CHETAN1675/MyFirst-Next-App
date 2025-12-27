@@ -1,8 +1,16 @@
-import Link from "next/link"
-import Image from "next/image"
-import "./globals.css"
+import Link from "next/link";
+import Image from "next/image";
+import "./globals.css";
+import { cookies } from "next/headers";
+import { verifyToken } from "./lib/auth";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const tokenCookie = cookieStore.get("token"); 
+  const token = tokenCookie?.value;
+
+  const user = token ? await verifyToken(token) : null;
+
   return (
     <html lang="en">
       <body>
@@ -28,18 +36,23 @@ export default function RootLayout({ children }) {
             <h1 style={{ margin: 0 }}>NextJS App one</h1>
           </div>
 
-          <nav className="nav">
-            <Link href="/" >
-              Home
-            </Link>
+          <nav style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <Link href="/">Home</Link>
             <Link href="/products">Products</Link>
-            <Link href="/login">Login</Link>
+
+            {user ? (
+              <>
+                <Link href="/dashboard">Dashboard</Link>
+                <form action="/api/logout" method="post">
+                </form>
+              </>
+            ) : (
+              <Link href="/login">Login</Link>
+            )}
           </nav>
         </header>
 
-        <main style={{ padding: "1rem" }}>
-          {children}
-        </main>
+        <main style={{ padding: "1rem" }}>{children}</main>
 
         <footer
           style={{
@@ -53,5 +66,5 @@ export default function RootLayout({ children }) {
         </footer>
       </body>
     </html>
-  )
+  );
 }

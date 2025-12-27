@@ -1,7 +1,7 @@
 
 import { SignJWT, jwtVerify } from "jose";
 
-const secret = new TextEncoder().encode(nextprojectapp1234);
+const secret = new TextEncoder().encode("nextprojectapp1234");
 
 export async function signToken(payload) {
   return await new SignJWT(payload)

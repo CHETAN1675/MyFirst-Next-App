@@ -7,12 +7,12 @@ export async function middleware(req) {
 
   const user = token ? await verifyToken(token) : null;
 
-  // Not logged in → block dashboard
+  
   if (!user && pathname.startsWith("/dashboard")) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // Logged in → block login
+  
   if (user && pathname === "/login") {
     return NextResponse.redirect(new URL("/dashboard", req.url));
   }
