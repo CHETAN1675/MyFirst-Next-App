@@ -1,9 +1,8 @@
 import Image from "next/image";
 
 async function getProduct(id) {
-  const res = await fetch(`https://dummyjson.com/products/${id}`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`https://dummyjson.com/products/${id}`, 
+     { cache: "no-store" });
 
   if (!res.ok) {
     return null; 
@@ -12,7 +11,6 @@ async function getProduct(id) {
   return res.json();
 }
 
-// 🔥 Dynamic metadata
 export async function generateMetadata({ params }) {
   const {id} = await params;
   const product = await getProduct(id);
